@@ -1,4 +1,4 @@
-NAME    = ex00
+NAME    = ex00.exe
 CXX     = c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++17
 

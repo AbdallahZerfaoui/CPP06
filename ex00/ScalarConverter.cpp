@@ -27,14 +27,26 @@ bool ScalarConverter::isFloat(const std::string& input) {
     try {
         size_t pos;
         std::stof(input, &pos);
-        return pos == input.length() && input.back() == 'f';
+        return pos == input.length() - 1 && input.back() == 'f';
     } catch (...) {
         return false;
     }
 }
 
 bool ScalarConverter::isDouble(const std::string& input) {
-    return isFloat(input);
+    if (input.empty()) return false;
+
+    //handle -inff, +inff, nanf
+    if (input == "-inff" || input == "+inff" || input == "nanf")
+        return true;
+
+    try {
+        size_t pos;
+        std::stod(input, &pos);
+        return pos == input.length() && input.back() != 'f'; // not float
+    } catch (...) {
+        return false;
+    }
 }
 
 // Display conversion methods
@@ -76,4 +88,30 @@ void ScalarConverter::displayConversions(double d) {
     std::cout << "int: " << static_cast<int>(d) << "\n";
     std::cout << "float: " << static_cast<float>(d) << "f\n";
     std::cout << "double: " << d << "\n";
+}
+
+// Main conversion method
+void ScalarConverter::convert(const std::string& input) {
+    // Handle nan, nanf, +inf, -inf, +inff, -inff
+    if (input == "nan" || input == "nanf" ||
+        input == "+inf" || input == "-inf" ||
+        input == "+inff" || input == "-inff") {
+        std::cout << "char: impossible\n";
+        std::cout << "int: impossible\n";
+        std::cout << "float: nanf\n";
+        std::cout << "double: nan\n";
+        return;
+    }
+
+    if (isChar(input)) {
+        displayConversions(static_cast<char>(input[0]));
+    } else if (isInt(input)) {
+        displayConversions(std::stoi(input));
+    } else if (isFloat(input)) {
+        displayConversions(std::stof(input));
+    } else if (isDouble(input)) {
+        displayConversions(std::stod(input));
+    } else {
+        std::cerr << "Invalid input\n";
+    }  
 }
