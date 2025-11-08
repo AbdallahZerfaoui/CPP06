@@ -2,7 +2,7 @@
 
 #include <string>
 #include <iostream>
-// #include <iomanip>
+#include <iomanip> // for std::setprecision
 
 // all the methods are static because the class is not instantiable
 class ScalarConverter {

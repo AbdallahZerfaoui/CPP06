@@ -64,8 +64,8 @@ void ScalarConverter::displayConversions(int i) {
         std::cout << "char: Non displayable\n";
 
     std::cout << "int: " << i << "\n";
-    std::cout << "float: " << static_cast<float>(i) << "f\n";
-    std::cout << "double: " << static_cast<double>(i) << "\n";
+    std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(i) << "f\n";
+    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(i) << "\n";
 }
 
 void ScalarConverter::displayConversions(float f) {
@@ -75,8 +75,8 @@ void ScalarConverter::displayConversions(float f) {
         std::cout << "char: Non displayable\n";
 
     std::cout << "int: " << static_cast<int>(f) << "\n";
-    std::cout << "float: " << f << "f\n";
-    std::cout << "double: " << static_cast<double>(f) << "\n";
+    std::cout << std::fixed << std::setprecision(1) << "float: " << f << "f\n";
+    std::cout << std::fixed << std::setprecision(1) << "double: " << static_cast<double>(f) << "\n";
 }
 
 void ScalarConverter::displayConversions(double d) {
@@ -86,8 +86,8 @@ void ScalarConverter::displayConversions(double d) {
         std::cout << "char: Non displayable\n";
 
     std::cout << "int: " << static_cast<int>(d) << "\n";
-    std::cout << "float: " << static_cast<float>(d) << "f\n";
-    std::cout << "double: " << d << "\n";
+    std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(d) << "f\n";
+    std::cout << std::fixed << std::setprecision(1) << "double: " << d << "\n";
 }
 
 // Main conversion method
