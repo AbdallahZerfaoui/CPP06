@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <iostream>
+#include <limits> // INT_MAX, INT_MIN
 
 class ScalarConverter {
     public:
