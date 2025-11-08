@@ -2,6 +2,8 @@
 
 # include <string>
 # include <iostream>
+# include <cstdlib> // for rand()
+# include <ctime>   // for time()
 
 class Base {
     public:
